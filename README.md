@@ -6,7 +6,10 @@
 [https://al-quran-orpin.vercel.app/](https://al-quran-orpin.vercel.app/)
 
 ## YouTube Demo
-[Link YouTube](https://www.youtube.com/)
+[Link YouTube](https://youtu.be/5frU9l9CRk8)
+
+## Canva Slide Presentasi
+[Link Canva](https://www.canva.com/design/DAG0WqyWMoY/aNUtOO6v5fcDNRD01G92IQ/edit?utm_content=DAG0WqyWMoY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
 
 ## Fitur Utama
 - Melihat daftar surat Al-Qur’an
