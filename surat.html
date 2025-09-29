@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al-Qur'an Interaktif - Detail Surat</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="brand-link">
+                    <h2>Al-Qur'an Interaktif</h2>
+                </a>
+            </div>
+            <div class="nav-controls">
+                <button id="theme-toggle" class="theme-btn" title="Toggle Theme">🌙</button>
+                <div class="user-controls">
+                    <span id="user-greeting" class="user-greeting hidden"></span>
+                    <button id="login-btn" class="auth-btn">Login</button>
+                    <button id="register-btn" class="auth-btn">Daftar</button>
+                    <button id="logout-btn" class="auth-btn hidden">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Daftar Surat</h3>
+                <button id="sidebar-toggle" class="sidebar-toggle">☰</button>
+            </div>
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search" placeholder="Cari surat...">
+            </div>
+            <div id="sidebar-surat-list" class="sidebar-surat-list">
+                <div class="loading">Memuat daftar surat...</div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content-surat">
+            <div class="container">
+                <!-- Surat Header -->
+                <div id="surat-header" class="surat-header">
+                    <div class="loading">Memuat detail surat...</div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="surat-navigation">
+                    <button id="prev-surat" class="nav-btn" title="Surat Sebelumnya">← Sebelumnya</button>
+                    <div class="surat-controls">
+                        <button id="bookmark-surat" class="control-btn" title="Bookmark Surat">⭐</button>
+                        <button id="toggle-tafsir" class="control-btn" title="Toggle Tafsir">📖</button>
+                        <select id="qari-selector" class="qari-select">
+                            <option value="">Pilih Qari</option>
+                            <option value="abdullah_al_juhany">Abdullah Al-Juhany</option>
+                            <option value="abdul_muhsin_al_qasim">Abdul Muhsin Al-Qasim</option>
+                            <option value="abdurrahman_as_sudais">Abdurrahman As-Sudais</option>
+                            <option value="ibrahim_al_dossari">Ibrahim Al-Dossari</option>
+                            <option value="misyari_rasyid_al_afasy">Misyari Rasyid Al-Afasy</option>
+                        </select>
+                    </div>
+                    <button id="next-surat" class="nav-btn" title="Surat Berikutnya">Berikutnya →</button>
+                </div>
+
+                <!-- Search Ayat -->
+                <div class="ayat-search">
+                    <input type="text" id="ayat-search" placeholder="Cari ayat berdasarkan nomor atau teks...">
+                    <button id="ayat-search-btn">🔍</button>
+                </div>
+
+                <!-- Ayat List -->
+                <div id="ayat-list" class="ayat-list">
+                    <div class="loading">Memuat ayat-ayat...</div>
+                </div>
+
+                <!-- Tafsir Section -->
+                <div id="tafsir-section" class="tafsir-section hidden">
+                    <h3>Tafsir</h3>
+                    <div id="tafsir-content" class="tafsir-content">
+                        <div class="loading">Memuat tafsir...</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Al-Qur'an Interaktif. Menggunakan API dari EQuran.id</p>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <div id="login-form" class="auth-form">
+                <h3>Login</h3>
+                <input type="text" id="login-username" placeholder="Username">
+                <input type="password" id="login-password" placeholder="Password">
+                <button id="login-submit" class="auth-submit">Login</button>
+                <p class="auth-switch">Belum punya akun? <span id="show-register">Daftar di sini</span></p>
+            </div>
+            <div id="register-form" class="auth-form hidden">
+                <h3>Daftar</h3>
+                <input type="text" id="register-username" placeholder="Username">
+                <input type="password" id="register-password" placeholder="Password">
+                <input type="password" id="register-confirm" placeholder="Konfirmasi Password">
+                <button id="register-submit" class="auth-submit">Daftar</button>
+                <p class="auth-switch">Sudah punya akun? <span id="show-login">Login di sini</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player Modal -->
+    <div id="audio-modal" class="modal hidden">
+        <div class="modal-content audio-modal-content">
+            <span class="modal-close">&times;</span>
+            <div class="audio-player">
+                <h4 id="audio-title">Pemutar Audio</h4>
+                <audio id="audio-element" controls>
+                    <source id="audio-source" src="" type="audio/mpeg">
+                    Browser Anda tidak mendukung audio.
+                </audio>
+                <div class="audio-controls">
+                    <button id="audio-play">▶️</button>
+                    <button id="audio-pause">⏸️</button>
+                    <button id="audio-stop">⏹️</button>
+                    <input type="range" id="audio-volume" min="0" max="100" value="50">
+                    <span>Volume</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification hidden">
+        <span id="notification-text"></span>
+        <button id="notification-close">&times;</button>
+    </div>
+
+    <script type="module" src="src/main.js"></script>
+</body>
+</html>
